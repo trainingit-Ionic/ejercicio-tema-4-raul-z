@@ -10,8 +10,32 @@ import { ExplorarPage } from './explorar.page';
 const routes: Routes = [
   {
     path: '',
-    component: ExplorarPage
-  }
+    component: ExplorarPage,
+    children: [
+      {
+        path: 'libros',
+        loadChildren: './libros/libros.module#LibrosPageModule'
+      },
+      {
+        path: 'musica',
+        loadChildren: './musica/musica.module#MusicaPageModule'
+      },
+      {
+        path: 'peliculas',
+        loadChildren: './peliculas/peliculas.module#PeliculasPageModule'
+      },
+      {
+        path: '',
+        redirectTo: '/explorar/libros',
+        pathMatch: 'full'
+      },
+      {
+        path: '',
+        redirectTo: '/libros',
+        pathMatch: 'full'
+      },
+    ]
+  },
 ];
 
 @NgModule({
